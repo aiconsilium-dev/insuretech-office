@@ -3,9 +3,11 @@ import Badge from "@/components/common/Badge";
 import Card from "@/components/common/Card";
 import List from "@/components/common/List";
 import StatusBadge from "@/components/common/StatusBadge";
+import { useNavigate } from "react-router-dom";
 
 export default function DashboardPage() {
-  const { aptName, userName, setActiveTab } = useApp();
+  const { aptName, userName } = useApp();
+  const navigate = useNavigate();
 
   return (
     <div>
@@ -59,11 +61,11 @@ export default function DashboardPage() {
       <div className="mt-5">
         <div className="section-title">최근 접수</div>
         <List className="border border-gray-200">
-          <ListItem type="누수" location="101동 1204호" source="입주민 접수" typeClass="C" status="received" statusLabel="접수" onClick={() => setActiveTab("claims")} />
-          <ListItem type="파손" location="103동 802호" source="입주민 접수" typeClass="A" status="review" statusLabel="검토" onClick={() => setActiveTab("claims")} />
-          <ListItem type="결로" location="105동 501호" source="입주민 접수" typeClass="B" status="assess" statusLabel="산정" onClick={() => setActiveTab("claims")} />
-          <ListItem type="배관" location="지하주차장 B2" source="관리사무소 접수" typeClass="C" status="received" statusLabel="접수" onClick={() => setActiveTab("claims")} />
-          <ListItem type="사고" location="지하주차장 B1" source="관리사무소 접수" typeClass="C" status="review" statusLabel="검토" onClick={() => setActiveTab("claims")} />
+          <ListItem type="누수" location="101동 1204호" source="입주민 접수" typeClass="C" status="received" statusLabel="접수" onClick={() => navigate("/claims")} />
+          <ListItem type="파손" location="103동 802호" source="입주민 접수" typeClass="A" status="review" statusLabel="검토" onClick={() => navigate("/claims")} />
+          <ListItem type="결로" location="105동 501호" source="입주민 접수" typeClass="B" status="assess" statusLabel="산정" onClick={() => navigate("/claims")} />
+          <ListItem type="배관" location="지하주차장 B2" source="관리사무소 접수" typeClass="C" status="received" statusLabel="접수" onClick={() => navigate("/claims")} />
+          <ListItem type="사고" location="지하주차장 B1" source="관리사무소 접수" typeClass="C" status="review" statusLabel="검토" onClick={() => navigate("/claims")} />
         </List>
       </div>
     </div>

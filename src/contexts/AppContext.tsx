@@ -5,12 +5,8 @@ import { INITIAL_CLAIMS, STATUS_ORDER, STATUS_LABELS } from "@/lib/types";
 interface AppContextType {
   userName: string;
   aptName: string;
-  activeTab: TabId;
-  setActiveTab: (tab: TabId) => void;
   claims: Claim[];
   cycleStatus: (id: string) => void;
-  subPage: SubPage;
-  setSubPage: (page: SubPage) => void;
 }
 
 const AppContext = createContext<AppContextType | null>(null);
@@ -26,14 +22,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const userName = params.get("name") || "김관리";
   const aptName = params.get("apt") || "헬리오시티";
 
-  const [activeTab, setActiveTab] = useState<TabId>("dashboard");
   const [claims, setClaims] = useState<Claim[]>(INITIAL_CLAIMS);
-  const [subPage, setSubPage] = useState<SubPage>(null);
-
-  function handleTabChange(tab: TabId) {
-    setActiveTab(tab);
-    setSubPage(null);
-  }
 
   function cycleStatus(id: string) {
     setClaims((prev) =>
@@ -48,7 +37,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   return (
     <AppContext.Provider
-      value={{ userName, aptName, activeTab, setActiveTab: handleTabChange, claims, cycleStatus, subPage, setSubPage }}
+      value={{ userName, aptName, claims, cycleStatus }}
     >
       {children}
     </AppContext.Provider>

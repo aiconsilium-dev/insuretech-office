@@ -1,20 +1,27 @@
-import { AppProvider, useApp } from "@/contexts/AppContext";
-import BottomTabBar from "@/components/layout/BottomTabBar";
-import DashboardPage from "@/pages/DashboardPage";
-import ClaimsPage from "@/pages/ClaimsPage";
-import NewClaimPage from "@/pages/NewClaimPage";
-import MorePage from "@/pages/MorePage";
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import { AppProvider } from '@/contexts/AppContext';
+import BottomTabBar from '@/components/layout/BottomTabBar';
+import DashboardPage from '@/pages/DashboardPage';
+import ClaimsPage from '@/pages/ClaimsPage';
+import NewClaimPage from '@/pages/NewClaimPage';
+import MorePage from '@/pages/MorePage';
+import FieldCheckPage from '@/pages/FieldCheckPage';
+import PricingPage from '@/pages/PricingPage';
+import IndemnityPage from '@/pages/IndemnityPage';
 
 function AppContent() {
-  const { activeTab } = useApp();
-
   return (
     <div className="max-w-[430px] mx-auto h-full flex flex-col bg-white relative">
-      <div className="flex-1 overflow-y-auto px-4 pt-5 pb-[100px] [&::-webkit-scrollbar]:w-0">
-        {activeTab === "dashboard" && <DashboardPage />}
-        {activeTab === "claims" && <ClaimsPage />}
-        {activeTab === "new" && <NewClaimPage />}
-        {activeTab === "more" && <MorePage />}
+      <div className="flex-1 overflow-y-auto [&::-webkit-scrollbar]:w-0">
+        <Routes>
+          <Route path="/" element={<DashboardPage />} />
+          <Route path="/claims" element={<ClaimsPage />} />
+          <Route path="/new" element={<NewClaimPage />} />
+          <Route path="/more" element={<MorePage />} />
+          <Route path="/field-check" element={<FieldCheckPage />} />
+          <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/indemnity" element={<IndemnityPage />} />
+        </Routes>
       </div>
       <BottomTabBar />
     </div>
@@ -24,7 +31,9 @@ function AppContent() {
 export default function App() {
   return (
     <AppProvider>
-      <AppContent />
+      <HashRouter>
+        <AppContent />
+      </HashRouter>
     </AppProvider>
   );
 }
