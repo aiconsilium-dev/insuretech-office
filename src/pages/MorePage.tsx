@@ -6,20 +6,20 @@ function MenuItem({ iconBg, iconColor, icon, title, badge, desc, onClick }: {
   title: string; badge?: number; desc: string; onClick: () => void;
 }) {
   return (
-    <div className="flex items-center gap-3 py-4 border-b border-gray-100 last:border-b-0 cursor-pointer" onClick={onClick}>
+    <div className="flex items-center gap-3 py-4 border-b border-[#262626] last:border-b-0 cursor-pointer" onClick={onClick}>
       <div className={clsx("w-9 h-9 rounded-[10px] flex items-center justify-center [&_svg]:w-[18px] [&_svg]:h-[18px] [&_svg]:stroke-current [&_svg]:fill-none [&_svg]:stroke-[1.8]", iconBg, iconColor)}>
         {icon}
       </div>
       <div className="flex-1">
-        <div className="text-[15px] font-semibold">
+        <div className="text-[15px] font-semibold text-white">
           {title}
           {badge != null && (
             <span className="badge badge-primary !text-[10px] !font-bold ml-1">{badge}</span>
           )}
         </div>
-        <div className="text-xs text-gray-500 mt-0.5">{desc}</div>
+        <div className="text-xs text-[#737373] mt-0.5">{desc}</div>
       </div>
-      <div className="text-gray-400 text-sm">›</div>
+      <div className="text-[#737373] text-sm">›</div>
     </div>
   );
 }
@@ -29,7 +29,7 @@ export default function MorePage() {
 
   return (
     <div>
-      <div className="text-[22px] font-extrabold mb-4">더보기</div>
+      <div className="text-[22px] font-extrabold mb-4 text-white tracking-tight">더보기</div>
 
       <MenuItem
         iconBg="bg-primary-light" iconColor="text-primary"
@@ -39,7 +39,7 @@ export default function MorePage() {
         onClick={() => navigate("/field-check")}
       />
       <MenuItem
-        iconBg="bg-gray-100" iconColor="text-gray-700"
+        iconBg="bg-[rgba(255,255,255,0.06)]" iconColor="text-[#a3a3a3]"
         icon={<svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" /></svg>}
         title="품셈 확인"
         desc="2026년 3월 기준 최신 품셈"
@@ -53,7 +53,7 @@ export default function MorePage() {
         onClick={() => navigate("/indemnity")}
       />
       <MenuItem
-        iconBg="bg-gray-100" iconColor="text-gray-600"
+        iconBg="bg-[rgba(255,255,255,0.06)]" iconColor="text-[#737373]"
         icon={<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" /></svg>}
         title="설정"
         desc="알림, 계정, 앱 정보"

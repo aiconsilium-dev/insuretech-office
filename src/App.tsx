@@ -11,8 +11,8 @@ import IndemnityPage from '@/pages/IndemnityPage';
 
 function AppContent() {
   return (
-    <div className="max-w-[430px] mx-auto h-full flex flex-col bg-white relative">
-      <div className="flex-1 overflow-y-auto [&::-webkit-scrollbar]:w-0">
+    <div className="max-w-[430px] mx-auto h-full flex flex-col bg-[#0a0a0a] relative">
+      <div className="flex-1 overflow-y-auto [&::-webkit-scrollbar]:w-0 px-5 pt-5 pb-24">
         <Routes>
           <Route path="/" element={<DashboardPage />} />
           <Route path="/claims" element={<ClaimsPage />} />

@@ -20,7 +20,7 @@ export default function Badge({ variant = "gray", children, className }: BadgePr
         variant === "danger" && "badge-danger",
         variant === "info" && "badge-info",
         variant === "gray" && "badge-gray",
-        variant === "black" && "bg-black text-white",
+        variant === "black" && "bg-white text-[#0a0a0a]",
         className
       )}
     >

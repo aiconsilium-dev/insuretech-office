@@ -8,8 +8,8 @@ function SubHeader({ title }: { title: string }) {
   const navigate = useNavigate();
   return (
     <div className="flex items-center gap-2 mb-4">
-      <button className="btn btn-outline btn-sm !rounded-[var(--radius-pill)] !text-black !border-gray-200" onClick={() => navigate(-1)}>‹ 뒤로</button>
-      <span className="text-lg font-bold">{title}</span>
+      <button className="btn btn-outline btn-sm !rounded-[var(--radius-pill)]" onClick={() => navigate(-1)}>‹ 뒤로</button>
+      <span className="text-lg font-bold text-white">{title}</span>
     </div>
   );
 }
@@ -18,11 +18,11 @@ function InspectionCard({ location, type, date, status }: { location: string; ty
   const [dispatched, setDispatched] = useState(false);
 
   return (
-    <Card variant="outlined" className="!p-4 mb-3 shadow-sm">
+    <Card variant="outlined" className="!p-4 mb-3">
       <div className="flex justify-between items-start mb-2">
         <div>
-          <div className="font-bold text-[15px]">{location}</div>
-          <div className="text-xs text-gray-500 mt-0.5">{type} | 요청일 {date}</div>
+          <div className="font-bold text-[15px] text-white">{location}</div>
+          <div className="text-xs text-[#737373] mt-0.5">{type} | 요청일 {date}</div>
         </div>
         <Badge variant={dispatched ? "info" : "warning"} className="!text-[11px]">
           {dispatched ? "진행" : status}
@@ -72,16 +72,16 @@ export default function FieldCheckPage() {
         </>
       )}
       {inspTab === "progress" && (
-        <Card variant="outlined" className="!p-4 mb-3 shadow-sm">
+        <Card variant="outlined" className="!p-4 mb-3">
           <div className="flex justify-between items-start mb-2">
             <div>
-              <div className="font-bold text-[15px]">102동 305호</div>
-              <div className="text-xs text-gray-500 mt-0.5">곰팡이 | 요청일 2026.03.25</div>
+              <div className="font-bold text-[15px] text-white">102동 305호</div>
+              <div className="text-xs text-[#737373] mt-0.5">곰팡이 | 요청일 2026.03.25</div>
             </div>
             <Badge variant="info" className="!text-[11px]">진행</Badge>
           </div>
           <div className="mt-3 mb-3">
-            <label className="block text-[13px] font-semibold text-gray-700 mb-1.5">현장 사진 촬영</label>
+            <label className="block text-[13px] font-semibold text-[#d4d4d4] mb-1.5">현장 사진 촬영</label>
             <div className="photo-grid">
               {["전체", "주변", "상세"].map((label) => (
                 <div key={label} className="photo-slot !rounded-[var(--radius-card)] !text-[10px]">
@@ -94,14 +94,14 @@ export default function FieldCheckPage() {
             </div>
           </div>
           <div className="mb-3">
-            <label className="block text-[13px] font-semibold text-gray-700 mb-1.5">현장 소견서</label>
+            <label className="block text-[13px] font-semibold text-[#d4d4d4] mb-1.5">현장 소견서</label>
             <textarea className="input !min-h-[60px] !resize-y" placeholder="현장 조사 결과를 작성하세요" />
           </div>
-          <button className="btn btn-sm btn-full !bg-black !text-white !rounded-[var(--radius-pill)]">조사 완료 제출</button>
+          <button className="btn btn-sm btn-full !bg-white !text-[#0a0a0a] !rounded-[var(--radius-pill)]">조사 완료 제출</button>
         </Card>
       )}
       {inspTab === "done" && (
-        <div className="text-center py-10 text-gray-400 text-sm">완료된 조사 건이 없습니다</div>
+        <div className="text-center py-10 text-[#737373] text-sm">완료된 조사 건이 없습니다</div>
       )}
     </div>
   );

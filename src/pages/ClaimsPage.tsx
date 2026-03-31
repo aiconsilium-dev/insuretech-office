@@ -24,7 +24,7 @@ export default function ClaimsPage() {
 
   return (
     <div>
-      <div className="text-[22px] font-extrabold mb-4">접수 관리</div>
+      <div className="text-[22px] font-extrabold mb-4 text-white tracking-tight">접수 관리</div>
 
       {/* Type filter */}
       <div className="flex gap-2 overflow-x-auto pb-2 mb-3 scrollbar-hide">
@@ -34,7 +34,7 @@ export default function ClaimsPage() {
             onClick={() => setTypeFilter(f)}
             className={clsx(
               "btn btn-sm !rounded-[var(--radius-pill)] !border whitespace-nowrap",
-              typeFilter === f ? "!bg-black !text-white !border-black" : "!bg-white !text-gray-600 !border-gray-200"
+              typeFilter === f ? "!bg-white !text-[#0a0a0a] !border-white" : "!bg-transparent !text-[#a3a3a3] !border-[#262626]"
             )}
           >
             {f === "all" ? "전체" : `TYPE ${f}`}
@@ -50,7 +50,7 @@ export default function ClaimsPage() {
             onClick={() => setSourceFilter(f)}
             className={clsx(
               "btn btn-sm !rounded-[var(--radius-pill)] !border whitespace-nowrap",
-              sourceFilter === f ? "!bg-black !text-white !border-black" : "!bg-white !text-gray-600 !border-gray-200"
+              sourceFilter === f ? "!bg-white !text-[#0a0a0a] !border-white" : "!bg-transparent !text-[#a3a3a3] !border-[#262626]"
             )}
           >
             {f === "all" ? "전체" : f === "resident" ? "입주민 접수" : "관리사무소 접수"}
@@ -88,14 +88,14 @@ function ClaimCard({
   }
 
   return (
-    <Card variant="outlined" className="!p-4 mb-3 shadow-sm" onClick={onToggle}>
+    <Card variant="outlined" className="!p-4 mb-3" onClick={onToggle}>
       <div className="flex justify-between items-start">
         <div className="flex-1 min-w-0">
-          <div className="text-xs text-gray-400 mb-1">{claim.id}</div>
-          <div className="text-[15px] font-bold">{loc}</div>
+          <div className="text-xs text-[#737373] mb-1">{claim.id}</div>
+          <div className="text-[15px] font-bold text-white">{loc}</div>
           <div className="flex gap-1.5 items-center mt-1.5 flex-wrap">
             <Badge variant="gray">{claim.type}</Badge>
-            <span className="text-xs text-gray-500">{sourceLabel}</span>
+            <span className="text-xs text-[#737373]">{sourceLabel}</span>
           </div>
         </div>
         <div className="flex flex-col items-end gap-1.5">
@@ -106,12 +106,12 @@ function ClaimCard({
             {claim.typeClass}
           </Badge>
           <StatusBadge status={claim.status} label={claim.statusLabel} />
-          <span className="text-[11px] text-gray-400">{claim.date}</span>
+          <span className="text-[11px] text-[#737373]">{claim.date}</span>
         </div>
       </div>
 
       {isOpen && (
-        <div className="pt-4 mt-3 border-t border-gray-100" onClick={(e) => e.stopPropagation()}>
+        <div className="pt-4 mt-3 border-t border-[#262626]" onClick={(e) => e.stopPropagation()}>
           <ClaimDetail claim={claim} />
 
           {/* Photos */}
@@ -134,7 +134,7 @@ function ClaimCard({
           {/* Actions */}
           <div className="flex gap-2 mt-1">
             <button className="btn btn-primary btn-sm flex-1 !rounded-[var(--radius-pill)]">현장조사 배정</button>
-            <button className="btn btn-outline btn-sm flex-1 !rounded-[var(--radius-pill)] !text-black !border-gray-200" onClick={onCycleStatus}>상태 변경</button>
+            <button className="btn btn-outline btn-sm flex-1 !rounded-[var(--radius-pill)]" onClick={onCycleStatus}>상태 변경</button>
           </div>
 
           {/* StatusSteps compound */}
@@ -155,9 +155,9 @@ function ClaimDetail({ claim }: { claim: Claim }) {
   if (claim.typeClass === "A") {
     return (
       <>
-        <div className="bg-gray-50 rounded-[var(--radius-card)] p-4 mb-3 border border-gray-200 border-l-[3px] border-l-black">
-          <div className="text-sm font-bold mb-1.5">시공사 하자 — 하자보수 청구 대상</div>
-          <div className="text-[13px] text-gray-600 leading-relaxed">{d.defectDetail || d.desc}</div>
+        <div className="bg-[#1a1a1a] rounded-[var(--radius-card)] p-4 mb-3 border border-[#262626] border-l-[3px] border-l-white">
+          <div className="text-sm font-bold mb-1.5 text-white">시공사 하자 — 하자보수 청구 대상</div>
+          <div className="text-[13px] text-[#a3a3a3] leading-relaxed">{d.defectDetail || d.desc}</div>
         </div>
         <DetailRow label="하자 상세" value={d.desc} />
         <DetailRow label="보증기간" value={d.warranty || "-"} />
@@ -168,9 +168,9 @@ function ClaimDetail({ claim }: { claim: Claim }) {
   if (claim.typeClass === "B") {
     return (
       <>
-        <div className="bg-gray-50 rounded-[var(--radius-card)] p-4 mb-3 border border-gray-200 border-l-[3px] border-l-gray-400">
-          <div className="text-sm font-bold mb-1.5">면책 대상</div>
-          <div className="text-[13px] text-gray-600 leading-relaxed">{d.exemptReason}</div>
+        <div className="bg-[#1a1a1a] rounded-[var(--radius-card)] p-4 mb-3 border border-[#262626] border-l-[3px] border-l-[#737373]">
+          <div className="text-sm font-bold mb-1.5 text-white">면책 대상</div>
+          <div className="text-[13px] text-[#a3a3a3] leading-relaxed">{d.exemptReason}</div>
         </div>
         <DetailRow label="면책 사유" value={d.exemptReason || "-"} />
         <DetailRow label="약관 조항" value={d.clauseRef || "-"} />
@@ -180,10 +180,10 @@ function ClaimDetail({ claim }: { claim: Claim }) {
 
   return (
     <>
-      <div className="bg-gray-50 rounded-[var(--radius-card)] p-4 mb-3 border border-gray-200 border-l-[3px] border-l-primary">
-        <div className="text-sm font-bold mb-1.5">보험금 산출</div>
-        <div className="text-[13px] text-gray-600 leading-relaxed">
-          AI 적산 금액: <strong>{d.aiAmount || "-"}</strong>
+      <div className="bg-[#1a1a1a] rounded-[var(--radius-card)] p-4 mb-3 border border-[#262626] border-l-[3px] border-l-primary">
+        <div className="text-sm font-bold mb-1.5 text-white">보험금 산출</div>
+        <div className="text-[13px] text-[#a3a3a3] leading-relaxed">
+          AI 적산 금액: <strong className="text-white">{d.aiAmount || "-"}</strong>
         </div>
       </div>
       <DetailRow label="소유자 부담" value={d.ownerAmount || "-"} />
@@ -197,7 +197,7 @@ function DetailRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="mb-3">
       <div className="section-title !mb-1">{label}</div>
-      <div className="text-sm text-black leading-relaxed">{value}</div>
+      <div className="text-sm text-[#d4d4d4] leading-relaxed">{value}</div>
     </div>
   );
 }
