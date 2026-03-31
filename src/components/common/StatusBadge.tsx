@@ -7,10 +7,10 @@ interface Props {
 }
 
 const STATUS_STYLES: Record<ClaimStatus, string> = {
-  received: "bg-[rgba(245,158,11,0.15)] text-[#f59e0b]",
-  review: "bg-[rgba(59,130,246,0.15)] text-[#3b82f6]",
-  assess: "bg-[rgba(99,102,241,0.15)] text-[#6366f1]",
-  complete: "bg-[rgba(16,185,129,0.15)] text-[#10b981]",
+  received: "bg-[#f5f5f5] text-[#737373]",
+  review: "bg-[rgba(59,130,246,0.08)] text-[#3b82f6]",
+  assess: "bg-[#f5f5f5] text-[#171717]",
+  complete: "bg-[rgba(16,185,129,0.08)] text-[#059669]",
 };
 
 export default function StatusBadge({ status, label }: Props) {

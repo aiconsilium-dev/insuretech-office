@@ -22,7 +22,7 @@ function Modal({ open, onClose, children, center }: ModalProps) {
       <div
         className={clsx(
           center
-            ? "bg-[#171717] border border-[#262626] rounded-[var(--radius-card)] w-[calc(100%-40px)] max-w-[380px] max-h-[80vh] overflow-y-auto"
+            ? "bg-white border border-[#e5e5e5] rounded-[var(--radius-card)] w-[calc(100%-40px)] max-w-[380px] max-h-[80vh] overflow-y-auto shadow-md"
             : "modal-content"
         )}
         onClick={(e) => e.stopPropagation()}

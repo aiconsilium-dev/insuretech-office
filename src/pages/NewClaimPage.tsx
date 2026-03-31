@@ -35,10 +35,10 @@ export default function NewClaimPage() {
 
   return (
     <div>
-      <div className="text-[22px] font-extrabold mb-4 text-white tracking-tight">신규 접수</div>
+      <div className="text-[24px] font-extrabold mb-5 text-[#0a0a0a] tracking-tight">신규 접수</div>
 
-      {/* SubTabs compound */}
-      <SubTabs className="mb-4">
+      {/* SubTabs */}
+      <SubTabs className="mb-5">
         <SubTabs.Tab active={activeNewTab === "common"} onClick={() => setActiveNewTab("common")}>
           공용부 사고접수
         </SubTabs.Tab>
@@ -55,19 +55,19 @@ export default function NewClaimPage() {
 
       {/* Loading Overlay */}
       {showLoading && (
-        <div className="fixed inset-0 bg-[#0a0a0a]/95 backdrop-blur-sm z-[var(--z-tab-bar)] flex flex-col items-center justify-center gap-5">
-          <div className="w-10 h-10 border-3 border-[#262626] border-t-primary rounded-full animate-spin" />
+        <div className="fixed inset-0 bg-white/95 backdrop-blur-sm z-[var(--z-tab-bar)] flex flex-col items-center justify-center gap-5">
+          <div className="w-10 h-10 border-3 border-[#e5e5e5] border-t-[#171717] rounded-full animate-spin" />
           <div className="text-center">
             {["사고 정보 분석 중...", "하자 유형 판별 중...", "약관/보증기간 대조 중...", "TYPE 분류 완료"].map((text, i) => (
               <div key={i} className={clsx("text-[13px] my-1.5 transition-colors duration-300",
-                i < loadingStep ? "text-[#737373]" : i === loadingStep ? "text-primary font-semibold" : "text-[#404040]"
+                i < loadingStep ? "text-[#a3a3a3]" : i === loadingStep ? "text-[#0a0a0a] font-semibold" : "text-[#d4d4d4]"
               )}>{text}</div>
             ))}
           </div>
         </div>
       )}
 
-      {/* Result Modal — compound */}
+      {/* Result Modal */}
       <Modal open={showResult} center onClose={() => setShowResult(false)}>
         <Modal.Body className="!p-7 text-center">
           <ResultContent type={resultType} />
@@ -82,7 +82,7 @@ function CommonForm({ accType, setAccType, onSubmit }: { accType: string; setAcc
   return (
     <div>
       <FormGroup label="사고유형">
-        <select className="input !appearance-none !bg-[url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23737373%22%20stroke-width%3D%222%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%2F%3E%3C%2Fsvg%3E')] !bg-no-repeat !bg-[position:right_12px_center]"
+        <select className="input !appearance-none !bg-[url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23a3a3a3%22%20stroke-width%3D%222%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%2F%3E%3C%2Fsvg%3E')] !bg-no-repeat !bg-[position:right_12px_center]"
           value={accType} onChange={(e) => setAccType(e.target.value)}>
           <option value="">선택하세요</option>
           <option>공용배관 누수</option>
@@ -124,11 +124,11 @@ function ProxyForm({ onSubmit }: { onSubmit: () => void }) {
 
   return (
     <div>
-      <Card variant="outlined" className="!border-primary !bg-primary-light !p-4 mb-5">
-        <div className="text-sm text-[#d4d4d4] leading-relaxed">
-          배달원, 택배기사, 방문객 등 앱 접근 권한이 없는 <strong className="text-primary">비입주민 사고</strong>를 대리 접수합니다.
+      <div className="bg-[#f5f5f5] border border-[#e5e5e5] rounded-[var(--radius-card)] p-4 mb-5">
+        <div className="text-sm text-[#171717] leading-relaxed">
+          배달원, 택배기사, 방문객 등 앱 접근 권한이 없는 <strong className="text-[#0a0a0a] font-bold">비입주민 사고</strong>를 대리 접수합니다.
         </div>
-      </Card>
+      </div>
 
       <div className="section-title">피해자 정보</div>
       <FormGroup label="이름">
@@ -174,10 +174,10 @@ function ProxyForm({ onSubmit }: { onSubmit: () => void }) {
       <Card variant="outlined" className="!px-4">
         <div className="flex items-center justify-between py-3.5">
           <div>
-            <div className="text-sm font-semibold text-white">도급업체 관련 여부</div>
-            <div className="text-xs text-[#737373] mt-0.5">책임 경합 시 도급업체 보험 동시 접수</div>
+            <div className="text-sm font-semibold text-[#0a0a0a]">도급업체 관련 여부</div>
+            <div className="text-xs text-[#a3a3a3] mt-0.5">책임 경합 시 도급업체 보험 동시 접수</div>
           </div>
-          <div className={clsx("w-11 h-6 rounded-xl relative cursor-pointer transition-colors", toggleOn ? "bg-primary" : "bg-[#262626]")} onClick={() => setToggleOn(!toggleOn)}>
+          <div className={clsx("w-11 h-6 rounded-xl relative cursor-pointer transition-colors", toggleOn ? "bg-[#171717]" : "bg-[#e5e5e5]")} onClick={() => setToggleOn(!toggleOn)}>
             <div className={clsx("w-5 h-5 bg-white rounded-full absolute top-0.5 shadow-sm transition-[left]", toggleOn ? "left-[22px]" : "left-0.5")} />
           </div>
         </div>
@@ -191,7 +191,7 @@ function ProxyForm({ onSubmit }: { onSubmit: () => void }) {
 function FormGroup({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="mb-4.5">
-      <label className="block text-[13px] font-semibold text-[#d4d4d4] mb-1.5">{label}</label>
+      <label className="block text-[13px] font-semibold text-[#171717] mb-1.5">{label}</label>
       {children}
     </div>
   );
@@ -217,26 +217,26 @@ function ResultContent({ type }: { type: "A" | "B" | "C" }) {
   if (type === "A") {
     return (
       <>
-        <div className="text-[40px] font-extrabold text-white mb-2">TYPE A</div>
-        <div className="text-base font-bold mb-2 text-white">시공사 하자</div>
-        <div className="text-[15px] text-[#a3a3a3] leading-relaxed mb-4">하자보수 청구 대상으로 분류되었습니다.<br />시공사에 보수 청구가 진행됩니다.</div>
+        <div className="text-[40px] font-extrabold text-[#0a0a0a] mb-2">TYPE A</div>
+        <div className="text-base font-bold mb-2 text-[#0a0a0a]">시공사 하자</div>
+        <div className="text-[15px] text-[#737373] leading-relaxed mb-4">하자보수 청구 대상으로 분류되었습니다.<br />시공사에 보수 청구가 진행됩니다.</div>
       </>
     );
   }
   if (type === "B") {
     return (
       <>
-        <div className="text-[40px] font-extrabold text-[#737373] mb-2">TYPE B</div>
-        <div className="text-base font-bold mb-2 text-white">면책 대상</div>
-        <div className="text-[15px] text-[#a3a3a3] leading-relaxed mb-4">약관 면책 사유에 해당합니다.<br />입주자 관리 부주의 또는 자연 마모로 판단됩니다.</div>
+        <div className="text-[40px] font-extrabold text-[#a3a3a3] mb-2">TYPE B</div>
+        <div className="text-base font-bold mb-2 text-[#0a0a0a]">면책 대상</div>
+        <div className="text-[15px] text-[#737373] leading-relaxed mb-4">약관 면책 사유에 해당합니다.<br />입주자 관리 부주의 또는 자연 마모로 판단됩니다.</div>
       </>
     );
   }
   return (
     <>
-      <div className="text-[40px] font-extrabold text-primary mb-2">TYPE C</div>
-      <div className="text-base font-bold mb-2 text-white">보험금 산출 대상</div>
-      <div className="text-[15px] text-[#a3a3a3] leading-relaxed mb-4">AI 적산 금액: <strong className="text-white">1,850,000원</strong><br />소유자: 1,480,000원 / 임차인: 370,000원</div>
+      <div className="text-[40px] font-extrabold text-[#3b82f6] mb-2">TYPE C</div>
+      <div className="text-base font-bold mb-2 text-[#0a0a0a]">보험금 산출 대상</div>
+      <div className="text-[15px] text-[#737373] leading-relaxed mb-4">AI 적산 금액: <strong className="text-[#0a0a0a]">1,850,000원</strong><br />소유자: 1,480,000원 / 임차인: 370,000원</div>
     </>
   );
 }
