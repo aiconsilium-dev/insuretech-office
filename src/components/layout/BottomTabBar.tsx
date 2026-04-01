@@ -1,12 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
 import clsx from 'clsx';
-import { LayoutDashboard, Files, PlusCircle, MoreHorizontal } from 'lucide-react';
 
 const TABS = [
-  { path: '/', label: '대시보드', icon: <LayoutDashboard /> },
-  { path: '/claims', label: '접수관리', icon: <Files /> },
-  { path: '/new', label: '신규접수', icon: <PlusCircle /> },
-  { path: '/more', label: '더보기', icon: <MoreHorizontal /> },
+  { path: '/', label: '홈', icon: '●' },
+  { path: '/claims', label: '접수관리', icon: '■' },
+  { path: '/new', label: '신규접수', icon: '◆' },
+  { path: '/more', label: '더보기', icon: '─' },
 ];
 
 export default function BottomTabBar() {
@@ -18,9 +17,9 @@ export default function BottomTabBar() {
         <Link
           key={tab.path}
           to={tab.path}
-          className={clsx('tab-item', { 'active': location.pathname === tab.path })}
+          className={clsx('tab-item', { active: location.pathname === tab.path })}
         >
-          {tab.icon}
+          <span className="text-[18px]">{tab.icon}</span>
           <span>{tab.label}</span>
         </Link>
       ))}

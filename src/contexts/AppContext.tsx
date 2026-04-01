@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
-import type { TabId, Claim, SubPage } from "@/lib/types";
+import type { Claim, ClaimStatus } from "@/lib/types";
 import { INITIAL_CLAIMS, STATUS_ORDER, STATUS_LABELS } from "@/lib/types";
 
 interface AppContextType {
@@ -36,9 +36,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <AppContext.Provider
-      value={{ userName, aptName, claims, cycleStatus }}
-    >
+    <AppContext.Provider value={{ userName, aptName, claims, cycleStatus }}>
       {children}
     </AppContext.Provider>
   );

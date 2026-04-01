@@ -6,8 +6,6 @@ import ClaimsPage from '@/pages/ClaimsPage';
 import NewClaimPage from '@/pages/NewClaimPage';
 import MorePage from '@/pages/MorePage';
 import FieldCheckPage from '@/pages/FieldCheckPage';
-import PricingPage from '@/pages/PricingPage';
-import IndemnityPage from '@/pages/IndemnityPage';
 
 function AppContent() {
   return (
@@ -19,8 +17,6 @@ function AppContent() {
           <Route path="/new" element={<NewClaimPage />} />
           <Route path="/more" element={<MorePage />} />
           <Route path="/field-check" element={<FieldCheckPage />} />
-          <Route path="/pricing" element={<PricingPage />} />
-          <Route path="/indemnity" element={<IndemnityPage />} />
         </Routes>
       </div>
       <BottomTabBar />
