@@ -2,12 +2,13 @@ import { useApp } from "@/contexts/AppContext";
 import Card from "@/components/common/Card";
 import Badge from "@/components/common/Badge";
 import { useNavigate } from "react-router-dom";
+import KpiBox from "./overview/KPIGrid";
+import QuickMenuItem from "./overview/QuickMenuItem";
 
 export default function DashboardPage() {
   const { userName, aptName, claims } = useApp();
   const navigate = useNavigate();
 
-  // KPI 계산
   const newCount = claims.filter((c) => c.status === "received").length;
   const fieldWait = claims.filter((c) => c.status === "received" || c.status === "review").length;
   const doneCount = claims.filter((c) => c.status === "complete").length;
@@ -124,36 +125,6 @@ export default function DashboardPage() {
           </Card.Body>
         </Card>
       </div>
-    </div>
-  );
-}
-
-/* ── KPI 박스 ── */
-function KpiBox({ label, count, color }: { label: string; count: number; color: string }) {
-  return (
-    <div className="rounded-[10px] border border-[var(--color-border)] py-3 text-center">
-      <div
-        className="text-[20px] font-bold tracking-[-0.5px]"
-        style={{ color: count > 0 ? color : "var(--color-text-dim)" }}
-      >
-        {count}
-      </div>
-      <div className="text-[11px] text-text-muted mt-0.5">{label}</div>
-    </div>
-  );
-}
-
-/* ── 바로가기 메뉴 ── */
-function QuickMenuItem({ symbol, label, onClick, color }: { symbol: string; label: string; onClick: () => void; color: string }) {
-  return (
-    <div className="text-center cursor-pointer" onClick={onClick}>
-      <div
-        className="w-12 h-12 rounded-[14px] border border-[var(--color-border)] flex items-center justify-center text-lg mx-auto mb-1.5 bg-white transition-transform hover:scale-105"
-        style={{ color }}
-      >
-        {symbol}
-      </div>
-      <span className="block text-[11px] font-medium text-text-muted">{label}</span>
     </div>
   );
 }

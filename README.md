@@ -1,65 +1,69 @@
-# InsureTech Office (관리사무소 앱)
+# InsureTech Office — 관리사무소 앱
 
-아파트 단지 관리사무소를 위한 보험 접수 관리, 현장조사, AI 분류 모바일 웹 앱.
+> 아파트 관리사무소 전용 보험사고 접수·관리 모바일 웹 애플리케이션
 
-## 🚀 Live Demo
+## 🚀 데모
+**[https://juh-oh.github.io/insuretech-office/](https://juh-oh.github.io/insuretech-office/)**
 
-[https://aiconsilium-dev.github.io/insuretech-office/](https://aiconsilium-dev.github.io/insuretech-office/)
+## 📋 기술 스택
 
-URL 파라미터:
-```
-?name=김관리&apt=헬리오시티
-```
-
-## 📋 기능
-
-- **대시보드**: KPI (금일접수/처리중/현장조사), TYPE별 현황, AI 알림, 최근 접수
-- **접수관리**: TYPE/출처 필터, 상세 확장, 상태 변경, 현장조사 배정
-- **신규접수**: 공용부 사고접수 + 비입주민 대리접수, AI TYPE 분류
-- **더보기**: 현장조사 관리 (대기/진행/완료), 품셈 확인, 구상권 현황
-
-## 🛠 Tech Stack
-
-| 기술 | 버전 |
+| 역할 | 기술 |
 |------|------|
-| React | 19 |
-| Vite | 8 |
-| Tailwind CSS | 4 (v4 @tailwindcss/vite) |
-| TypeScript | 5 (strict) |
-| pnpm | 10+ |
+| UI 프레임워크 | React 19 |
+| 언어 | TypeScript 5 (strict) |
+| 번들러 | Vite 8 |
+| 라우팅 | React Router DOM v7 (HashRouter) |
+| 서버 상태 | TanStack React Query v5 |
+| 클라이언트 상태 | Zustand v5 |
+| HTTP 클라이언트 | fetch 래퍼 (apiFetch) |
+| 스타일링 | Tailwind CSS v4 |
+| 아이콘 | Lucide React |
+| API 모킹 | MSW v2 |
+| 패키지 매니저 | pnpm |
 
-## 📁 프로젝트 구조
+## 📂 폴더 구조 (FSD)
 
 ```
 src/
-├── App.tsx
-├── main.tsx
-├── index.css
-├── lib/types.ts
-├── contexts/AppContext.tsx
-├── components/
-│   ├── layout/BottomTabBar.tsx
-│   └── common/
-│       ├── Pill.tsx
-│       ├── StatusBadge.tsx
-│       └── StatusSteps.tsx
-└── pages/
-    ├── DashboardPage.tsx
-    ├── ClaimsPage.tsx
-    ├── NewClaimPage.tsx
-    └── MorePage.tsx
+├── pages/            # 페이지별 Feature-Sliced Design
+│   ├── login/
+│   ├── dashboard/    (KPIGrid, QuickMenuItem)
+│   ├── new-claim/    (step1-damage-type, step2-details, step3-result)
+│   ├── claims/       (claim-list)
+│   ├── field-check/  (inspection)
+│   └── more/         (indemnity, pricing, settings)
+├── components/       # 공통 컴포넌트
+├── hooks/            # 커스텀 훅
+├── stores/           # Zustand 스토어
+├── lib/              # API 클라이언트, 쿼리키, 타입
+├── contexts/         # React Context
+└── mocks/            # MSW 핸들러 + 목업 데이터
 ```
 
-## 🏃 로컬 실행
+## 🛠 개발
 
 ```bash
+# 의존성 설치
 pnpm install
-pnpm dev     # http://localhost:3002
+
+# 개발 서버
+pnpm dev
+
+# 프로덕션 빌드
+pnpm build
+
+# 빌드 미리보기
+pnpm preview
 ```
 
-## 📦 빌드 & 배포
+## 📄 환경 변수
 
-```bash
-pnpm build   # dist/ 생성
-# gh-pages 브랜치로 push
+`.env.example` 참고:
+```env
+VITE_API_BASE_URL=https://api.example.com
+VITE_USE_MOCK=true
 ```
+
+## 📖 개발 가이드
+
+자세한 코딩 규칙은 [CLAUDE.md](./CLAUDE.md)를 참고하세요.
